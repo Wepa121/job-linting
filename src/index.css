@@ -1,13 +1,84 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@500;700&family=Space+Mono:wght@400;700&display=swap');
+
+*{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+body{
+  font-family: 'League Spartan', sans-serif;
+  font-size: 15px;
+  background-color: hsl(180, 52%, 96%);
+  color: hsl(180, 29%, 50%);
+}
+.users{
+  padding: .5rem;
+}
+.new{
+  margin: 2rem 0;
+}
+.container{
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* CARD */
+
+.card{
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 2rem;
+  justify-content: space-between;
+}
+.card-info-image{
+  margin-right: 1rem;
+}
+.card-info{
+  display: flex;
+  align-items: center;
+}
+
+.card-info-data{
+
+}
+.card-info-company{
+  display: flex
+}
+
+.card-info-position{
+  color: black;
+  margin: 10px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+ul{
+  display: flex;
+  gap: 1rem;
+  color: hsl(180, 8%, 52%);
+}
+
+li:first-child{
+  list-style:none;
+}
+
+/* card tools */
+.card-tools{
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card-tools-item{
+  background-color: hsl(180, 52%, 96%);
+  padding: .5rem 1rem;
+}
+
+.card-tools-item:hover{
+  cursor: pointer;
+  color: white;
+  background-color: hsl(180, 29%, 50%);
 }
