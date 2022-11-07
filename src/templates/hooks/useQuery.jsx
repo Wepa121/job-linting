@@ -1,7 +1,6 @@
-import {useState, useEffect} from "react"
+import {useEffect} from "react"
 
-function useQuery(query) {
-  const [jobs, setJobs] = useState([])
+function useQuery(query, setJobs) {
 
   useEffect(()=>{
     const fetchJobs = async () => { 
@@ -16,13 +15,12 @@ function useQuery(query) {
       })
     })
     const data = await res.json()
-    setJobs(data.data)
+    setJobs(data.data.Jobs)
     }
+
     fetchJobs()
 
-  }, [query])
-
-  return jobs
+  }, [query, setJobs])
 }
 
 export default useQuery

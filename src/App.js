@@ -7,10 +7,17 @@ import { insertJobs } from "data/query"
 
 function App() {
   const [list, setList] = useState(require("data/data.json"))
+  const [jobs, setJobs] = useState([])
+
+  useQuery(queryJobs, setJobs)
+
+
+
+
   
   // get list of Jobs
-  const {Jobs} = useQuery(queryJobs)
-
+  // const Jobs = useQuery(queryJobs)
+  console.log("yee: ",jobs)
   // create new Job
   const handleClick = ()=>{
     const tempObj = {
@@ -41,15 +48,17 @@ function App() {
     })
       const data = await res.json()
       console.log(data.data.insert_Jobs_one)
+      // setJobs([...jobs, data.data.insert_Jobs_one])
+      // console.log("this is new jobs:  ", jobs)
     }
     createJobs()
   }
 
-  
+
   return (
       <div className = "container">
         <div className = "new"> 
-          {Jobs && Jobs.map((item, index) => <div className = "users" key = {index}>
+          {jobs && jobs.map((item, index) => <div className = "users" key = {index}>
               <p>{item.id}</p>
               <p>{item.company}</p>
               <p>-</p>
