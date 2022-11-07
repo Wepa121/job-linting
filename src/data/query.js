@@ -9,7 +9,7 @@ export const queryJobs = `
   }
   `
 
-export const insertJobs = (obj) => {
+export const insertJobsOne = (obj) => {
   const {company, logo, newX, featured, position, role, level, contract, location, languages, tools} = obj
   
   return `
@@ -29,7 +29,17 @@ export const insertJobs = (obj) => {
     }){
       id
       company
+      tools
+      languages
     }
   }
   `
 }
+
+export const deleteJobsOne = (id) => `
+  mutation{
+    delete_Jobs_by_pk(id: ${id}) {
+      id
+    }
+  }
+  `

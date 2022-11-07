@@ -1,16 +1,18 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 
 import CardList from "components/CardList"
-import useQuery from "templates/hooks/useQuery"
-import {queryJobs} from "data/query"
-import { insertJobs } from "data/query"
+import JobForm from "components/JobForm"
+import useJobsState from "templates/hooks/useJobsState"
+import CheckForm from "components/CheckForm"
 
 function App() {
-  const [list, setList] = useState(require("data/data.json"))
-  const [jobs, setJobs] = useState([])
+  const {jobs, fetchJobs, insertJob, deleteJob} = useJobsState();
 
-  // get list of jobs
-  useQuery(queryJobs, setJobs)
+  const [list, setList] = useState(require("data/data.json"))
+
+  useEffect(() => {
+    fetchJobs();
+  }, [fetchJobs]);
 
   // create new Job
   const handleClick = ()=>{
@@ -27,40 +29,31 @@ function App() {
       languages: "{Ruby}", 
       tools: "{RoR}"
     }
-    const query = insertJobs(tempObj)
     
-    const createJobs = async () => { 
-      const res = await fetch("https://hasura-production-45b5.up.railway.app/v1/graphql",{
-      method: "POST", 
-      headers:{
-        "content-type" : "application/json",
-        "x-hasura-admin-secret" : "wepawepa121"
-      },
-      body: JSON.stringify({
-        query
-      })
-    })
-      const data = await res.json()
-      setJobs([...jobs, data.data.insert_Jobs_one])
-      
-    }
-    createJobs()
+    insertJob(tempObj);
   }
 
+  // Delete job but need id
+  const handleDelete = ()=>{
+    deleteJob(7)
+  }
   return (
-      <div className = "container">
-        <div className = "new"> 
-          {jobs && jobs.map((item, index) => <div className = "users" key = {index}>
-              <p>{item.id}</p>
-              <p>{item.company}</p>
-              <p>-</p>
-            </div>
-          )}
-          <p>----------------------------</p>
-        </div>
-        <button onClick={handleClick}>add Job</button>
-        <CardList list = {list}/>
+    <div className = "container">
+      <div className = "new"> 
+        {jobs && jobs.map((item, index) => <div className = "users" key = {index}>
+            <p>{item.id}</p>
+            <p>{item.company}</p>
+            <p>-</p>
+          </div>
+        )}
+        <p>----------------------------</p>
       </div>
+      <button onClick={handleClick}>add Job</button>
+      <button onClick={handleDelete}>Delete</button>
+      <CheckForm/>
+      <CardList list = {list}/>
+      <JobForm/>
+    </div>
   );
 }
 
