@@ -1,40 +1,51 @@
 import {useState} from "react"
 
 import CardList from "components/CardList"
-
 import useQuery from "templates/hooks/useQuery"
-
 import {queryJobs} from "data/query"
 import { insertJobs } from "data/query"
-
 
 function App() {
   const [list, setList] = useState(require("data/data.json"))
   
-  const [obj, setObj] = useState("as")
-
+  // get list of Jobs
   const {Jobs} = useQuery(queryJobs)
-  const insJ = useQuery(insertJobs(obj))
 
+  // create new Job
   const handleClick = ()=>{
     const tempObj = {
-      company:"MyHome",
-      logo:"./images/myhome.svg",
+      company:"Loop Studios",
+      logo:"./images/loop-studios.svg",
       newX: false, 
       featured: false, 
-      position: "Junior Frontend Developer", 
-      role: "Frontend", 
-      level: "Junior", 
-      contract: "5d ago", 
-      location: "USA only", 
-      languages: "{CSS, JavaScript}", 
-      tools: "{}"
+      position: "Software Engineer", 
+      role: "Fullstack", 
+      level: "Midweight", 
+      contract: "Full Time", 
+      location: "Worldwide", 
+      languages: "{JavaScript}", 
+      tools: "{Ruby, Sass}"
     }
-
-    setObj(tempObj)
+    const query = insertJobs(tempObj)
+    
+    const createJobs = async () => { 
+      const res = await fetch("https://hasura-production-45b5.up.railway.app/v1/graphql",{
+      method: "POST", 
+      headers:{
+        "content-type" : "application/json",
+        "x-hasura-admin-secret" : "wepawepa121"
+      },
+      body: JSON.stringify({
+        query
+      })
+    })
+      const data = await res.json()
+      console.log(data.data.insert_Jobs_one)
+    }
+    createJobs()
   }
-  // console.log(obj)
-  // console.log("ins", insJ)
+
+  
   return (
       <div className = "container">
         <div className = "new"> 

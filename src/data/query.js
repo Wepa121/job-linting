@@ -10,10 +10,6 @@ export const queryJobs = `
   `
 
 export const insertJobs = (obj) => {
-  if(obj === "as"){
-    return null
-  }
-  
   const {company, logo, newX, featured, position, role, level, contract, location, languages, tools} = obj
   
   return `
