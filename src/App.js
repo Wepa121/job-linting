@@ -9,29 +9,23 @@ function App() {
   const [list, setList] = useState(require("data/data.json"))
   const [jobs, setJobs] = useState([])
 
+  // get list of jobs
   useQuery(queryJobs, setJobs)
 
-
-
-
-  
-  // get list of Jobs
-  // const Jobs = useQuery(queryJobs)
-  console.log("yee: ",jobs)
   // create new Job
   const handleClick = ()=>{
     const tempObj = {
-      company:"Loop Studios",
-      logo:"./images/loop-studios.svg",
+      company:"FaceIt",
+      logo:"./images/faceit.svg",
       newX: false, 
       featured: false, 
-      position: "Software Engineer", 
-      role: "Fullstack", 
-      level: "Midweight", 
+      position: "Junior Backend Developer", 
+      role: "Backend", 
+      level: "Junior", 
       contract: "Full Time", 
-      location: "Worldwide", 
-      languages: "{JavaScript}", 
-      tools: "{Ruby, Sass}"
+      location: "UK only", 
+      languages: "{Ruby}", 
+      tools: "{RoR}"
     }
     const query = insertJobs(tempObj)
     
@@ -47,13 +41,11 @@ function App() {
       })
     })
       const data = await res.json()
-      console.log(data.data.insert_Jobs_one)
-      // setJobs([...jobs, data.data.insert_Jobs_one])
-      // console.log("this is new jobs:  ", jobs)
+      setJobs([...jobs, data.data.insert_Jobs_one])
+      
     }
     createJobs()
   }
-
 
   return (
       <div className = "container">
