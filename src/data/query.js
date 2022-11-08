@@ -3,8 +3,17 @@ export const queryJobs = `
     Jobs {
       id
       company
-      tools
+      logo
+      new
+      featured
+      position
+      role
+      level
+      created_at
+      contract
+      location
       languages
+      tools
     }
   }
   `
