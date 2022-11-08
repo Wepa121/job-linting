@@ -39,7 +39,7 @@ function JobForm() {
         <TextForm formData = {formData} setData = {(x) => setFormData(x)}/>
         <RadioForm formRadio = {formRadio} setRadio = {(x) => setFormRadio(x)}/>
         <CheckForm formCheck = {formCheck} setCheck = {(x) => setFormCheck(x)}/>
-        <input type={"submit"} value = "Submit"/>
+        <button type= "submit" className="btn-submit">Add Job </button>
       </form>
     </div>
   )

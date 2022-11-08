@@ -41,9 +41,9 @@ body{
   align-items: center;
 }
 
-.card-info-data{
+/* .card-info-data{
 
-}
+} */
 .card-info-company{
   display: flex
 }
@@ -78,6 +78,58 @@ li:first-child{
 }
 
 .card-tools-item:hover{
+  cursor: pointer;
+  color: white;
+  background-color: hsl(180, 29%, 50%);
+}
+
+/* form */
+.form-card{
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  padding: 2rem;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.form input{
+  margin-left: .5rem;
+  border: .1px solid grey;
+  padding: 3px;
+  outline: none;
+  border-radius: 4px;
+  color: hsl(180, 8%, 52%);
+}
+.form-text{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  gap: .5rem;
+}
+.form-text label{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-text input{
+  width: 70%;
+}
+.form p{
+  margin-top: 1rem;
+  margin-bottom: .25rem;
+}
+.btn-submit{
+  align-self: flex-start;
+  margin-top: 1rem;
+  padding: .3rem .7rem;
+  background-color: hsl(180, 52%, 96%);
+  color: inherit;
+  font-weight: 700;
+  border: none;
+}
+.btn-submit:hover{
   cursor: pointer;
   color: white;
   background-color: hsl(180, 29%, 50%);

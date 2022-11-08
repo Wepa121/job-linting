@@ -8,7 +8,7 @@ function TextForm({formData, setData}) {
     })
   }
   return (
-    <div>
+    <div className="form-text">
       <label>
         Company Name
         <input 
