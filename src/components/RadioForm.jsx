@@ -14,9 +14,9 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="new"
             type="radio"
-            id="new"
+            id="newX"
             value = "true"
-            checked = {formRadio.new === "true"}
+            checked = {formRadio.newX === "true"}
             onChange = {handleChange}
              />
           Yes
@@ -25,9 +25,9 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="new"
             type="radio"
-            id="new"
+            id="newX"
             value = "false"
-            checked = {formRadio.new === "false"}
+            checked = {formRadio.newX === "false"}
             onChange = {handleChange}
             />
           No

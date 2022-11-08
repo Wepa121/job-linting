@@ -16,7 +16,7 @@ function JobForm() {
   })
 
   const [formRadio, setFormRadio] = useState({
-    new: "",
+    newX: "",
     featured: "",
     role: "",
     level: "",
@@ -31,7 +31,7 @@ function JobForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
     setFormData({ company: "", logo: "", location: "", position: "" })
-    setFormRadio({ new: "", featured: "", role: "", level: "", contract: "" })
+    setFormRadio({ newX: "", featured: "", role: "", level: "", contract: "" })
     setFormCheck({languages: [], tools: []})
     const obj = {...formData, ...formRadio, ...formCheck}
     obj.languages = `{${obj.languages.join(", ")}}`
