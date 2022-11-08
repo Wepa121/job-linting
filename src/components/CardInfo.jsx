@@ -1,7 +1,7 @@
 import photo from "assets/photosnap.svg"
 
 function CardInfo({item}){
-  const {company, featured, contract, location} = item;
+  const {company, position, featured, contract, location} = item;
   
   return (
     <div className = "card-info">
@@ -12,7 +12,7 @@ function CardInfo({item}){
             {item.new && <p>NEW!</p>}
             {featured && <p>FEATURED</p>}
           </div>
-          <p className = "card-info-position">Senior Fronend Developer</p>
+          <p className = "card-info-position">{position}</p>
           <ul>
             <li>1d ago</li>
             <li>{contract}</li>
