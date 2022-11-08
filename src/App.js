@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import CardList from "components/CardList"
 import JobForm from "components/JobForm"
 import useJobsState from "templates/hooks/useJobsState"
@@ -37,23 +37,27 @@ function App() {
   const handleDelete = ()=>{
     deleteJob(7)
   }
-  console.log("appp")
+
   return (
-    <div className = "container">
-      <div className = "new"> 
-        {jobs && jobs.map((item, index) => <div className = "users" key = {index}>
-            <p>{item.id}</p>
-            <p>{item.company}</p>
-            <p>-</p>
-          </div>
-        )}
-        <p>----------------------------</p>
+    <Router>
+      <div className = "container">
+        <div className = "new"> 
+          {jobs && jobs.map((item, index) => <div className = "users" key = {index}>
+              <p>{item.id}</p>
+              <p>{item.company}</p>
+              <p>-</p>
+            </div>
+          )}
+        </div>
+        <button onClick={handleClick}>add Job</button>
+        <button onClick={handleDelete}>Delete</button>
+        <p>s</p>
+        <Routes>
+          <Route path="/" element = {<CardList list = {list}/>} />
+          <Route path="/add" element = {<JobForm/>} />
+        </Routes>
       </div>
-      <button onClick={handleClick}>add Job</button>
-      <button onClick={handleDelete}>Delete</button>
-      <CardList list = {list}/>
-      <JobForm/>
-    </div>
+    </Router>
   );
 }
 

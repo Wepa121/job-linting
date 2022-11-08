@@ -1,9 +1,13 @@
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 import RadioForm from "./RadioForm"
 import TextForm from "./TextForm"
 import CheckForm from "./CheckForm"
 
 function JobForm() {
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     company: "",
     logo: "",
@@ -30,6 +34,7 @@ function JobForm() {
     setFormRadio({ new: "", featured: "", role: "", level: "", contract: "" })
     setFormCheck({languages: [], tools: []})
     console.log({...formData, ...formRadio, ...formCheck})
+    navigate("/")
   }
 
 
