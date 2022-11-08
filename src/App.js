@@ -19,15 +19,15 @@ function App() {
   }
 
   // Delete job but need id
-  const handleDelete = ()=>{
-    deleteJob(7)
+  const handleDelete = (id)=>{
+    deleteJob(id)
   }
   
   return (
     <Router>
       <div className = "container">
         <Routes>
-          <Route path="/" element = {<CardList list = {jobs}/>} />
+          <Route path="/" element = {<CardList list = {jobs} handleDelete = {handleDelete}/>} />
           <Route path="/add" element = {<JobForm handleAdd = {handleAdd}/>} />
         </Routes>
       </div>
