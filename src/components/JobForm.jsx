@@ -33,7 +33,10 @@ function JobForm() {
     setFormData({ company: "", logo: "", location: "", position: "" })
     setFormRadio({ new: "", featured: "", role: "", level: "", contract: "" })
     setFormCheck({languages: [], tools: []})
-    console.log({...formData, ...formRadio, ...formCheck})
+    const obj = {...formData, ...formRadio, ...formCheck}
+    obj.languages = `{${obj.languages.join(", ")}}`
+    obj.tools = `{${obj.tools.join(", ")}}`
+    console.log(obj)
     navigate("/")
   }
 
