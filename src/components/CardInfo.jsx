@@ -1,22 +1,22 @@
 import photo from "assets/photosnap.svg"
 
 function CardInfo({item}){
-  const {company, featured} = item;
+  const {company, featured, contract, location} = item;
   
   return (
     <div className = "card-info">
-        <img src = {photo} alt= "photo" className = "card-info-image"/>
+        <img src = {photo} alt= "photos" className = "card-info-image"/>
         <div className = "card-info-data">
           <div className = "card-info-company"> 
             <p>{company}</p>
-            <p>NEW!</p>
-            <p>FEATURED</p>
+            {item.new && <p>NEW!</p>}
+            {featured && <p>FEATURED</p>}
           </div>
           <p className = "card-info-position">Senior Fronend Developer</p>
           <ul>
             <li>1d ago</li>
-            <li>Full Time</li>
-            <li>USA only</li>
+            <li>{contract}</li>
+            <li>{location}</li>
           </ul>
         </div>
     </div>
