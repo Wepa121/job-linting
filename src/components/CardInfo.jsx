@@ -1,11 +1,11 @@
-import photo from "assets/photosnap.svg"
+import Image from "assets/Image";
 
 function CardInfo({item}){
-  const {company, position, featured, contract, location} = item;
-  
+  const {company, position, featured, contract, location, logo} = item;
+  console.log(logo)
   return (
     <div className = "card-info">
-        <img src = {photo} alt= "photos" className = "card-info-image"/>
+        <Image logo = {logo}/>
         <div className = "card-info-data">
           <div className = "card-info-company"> 
             <p>{company}</p>

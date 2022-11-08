@@ -50,6 +50,7 @@ function JobForm({handleAdd}) {
         <RadioForm formRadio = {formRadio} setRadio = {(x) => setFormRadio(x)}/>
         <CheckForm formCheck = {formCheck} setCheck = {(x) => setFormCheck(x)}/>
         <button type= "submit" className="btn-submit">Add Job </button>
+        <button className="btn-submit" onClick={() => navigate("/")}>Back To Home</button>
       </form>
     </div>
   )
