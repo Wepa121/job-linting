@@ -26,6 +26,7 @@ body{
 /* CARD */
 
 .card{
+  position: relative;
   display: flex;
   align-items: center;
   background-color: white;
@@ -134,4 +135,16 @@ li:first-child{
   cursor: pointer;
   color: white;
   background-color: hsl(180, 29%, 50%);
+}
+
+/* Delete */
+.delete{
+  border: none;
+  background-color: inherit;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+.delete:hover{
+  cursor: pointer;
 }
