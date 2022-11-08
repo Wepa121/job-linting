@@ -15,20 +15,21 @@ function App() {
   }, []);
 
   // create new Job
-  const handleClick = ()=>{
-    const tempObj = {
-      company:"FaceIt",
-      logo:"./images/faceit.svg",
-      newX: false, 
-      featured: false, 
-      position: "Junior Backend Developer", 
-      role: "Backend", 
-      level: "Junior", 
-      contract: "Full Time", 
-      location: "UK only", 
-      languages: "{Ruby}", 
-      tools: "{RoR}"
-    }
+  const handleAdd = (tempObj)=>{
+    // const tempObj = {
+    //   company:"FaceIt",
+    //   logo:"./images/faceit.svg",
+    //   newX: false, 
+    //   featured: false, 
+    //   position: "Junior Backend Developer", 
+    //   role: "Backend", 
+    //   level: "Junior", 
+    //   contract: "Full Time", 
+    //   location: "UK only", 
+    //   languages: "{Ruby}", 
+    //   tools: "{RoR}"
+    // }
+    console.log("run")
     
     insertJob(tempObj);
   }
@@ -49,12 +50,12 @@ function App() {
             </div>
           )}
         </div>
-        <button onClick={handleClick}>add Job</button>
+        <button onClick={handleAdd}>add Job</button>
         <button onClick={handleDelete}>Delete</button>
         <p>s</p>
         <Routes>
           <Route path="/" element = {<CardList list = {list}/>} />
-          <Route path="/add" element = {<JobForm/>} />
+          <Route path="/add" element = {<JobForm handleAdd = {handleAdd}/>} />
         </Routes>
       </div>
     </Router>

@@ -79,7 +79,7 @@ function CheckForm({formCheck, setCheck}) {
       </div>
 
       <div>
-        <p>Whic tools does the Company need?</p>
+        <p>Which tools does the Company need?</p>
         <label>
           <input
             name="tools"

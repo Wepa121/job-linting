@@ -5,7 +5,7 @@ import RadioForm from "./RadioForm"
 import TextForm from "./TextForm"
 import CheckForm from "./CheckForm"
 
-function JobForm() {
+function JobForm({handleAdd}) {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -30,13 +30,15 @@ function JobForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    
     setFormData({ company: "", logo: "", location: "", position: "" })
     setFormRadio({ newX: "", featured: "", role: "", level: "", contract: "" })
     setFormCheck({languages: [], tools: []})
+    
     const obj = {...formData, ...formRadio, ...formCheck}
     obj.languages = `{${obj.languages.join(", ")}}`
     obj.tools = `{${obj.tools.join(", ")}}`
-    console.log(obj)
+    handleAdd(obj)
     navigate("/")
   }
 
