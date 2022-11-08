@@ -3,7 +3,7 @@ import {useEffect, useState} from "react"
 import CardList from "components/CardList"
 import JobForm from "components/JobForm"
 import useJobsState from "templates/hooks/useJobsState"
-import CheckForm from "components/CheckForm"
+
 
 function App() {
   const {jobs, fetchJobs, insertJob, deleteJob} = useJobsState();
@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     fetchJobs();
-  }, [fetchJobs]);
+  }, []);
 
   // create new Job
   const handleClick = ()=>{
@@ -37,6 +37,7 @@ function App() {
   const handleDelete = ()=>{
     deleteJob(7)
   }
+  console.log("appp")
   return (
     <div className = "container">
       <div className = "new"> 
@@ -50,7 +51,6 @@ function App() {
       </div>
       <button onClick={handleClick}>add Job</button>
       <button onClick={handleDelete}>Delete</button>
-      <CheckForm/>
       <CardList list = {list}/>
       <JobForm/>
     </div>
