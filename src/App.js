@@ -6,7 +6,10 @@ import useJobsState from "templates/hooks/useJobsState"
 
 
 function App() {
-  const [edit, setEdit] = useState({})
+  const [edit, setEdit] = useState({
+    data: {},
+    isEdit: false
+  })
   const {jobs, fetchJobs, insertJob, deleteJob} = useJobsState();
 
   useEffect(() => {
@@ -25,7 +28,7 @@ function App() {
   
 
   const handleEdit = (data) => {
-    setEdit(data)
+    setEdit({data, isEdit: true})
   }
 
   return (

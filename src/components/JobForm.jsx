@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import RadioForm from "./RadioForm"
@@ -7,7 +7,31 @@ import CheckForm from "./CheckForm"
 
 function JobForm({handleAdd, edit}) {
   const navigate = useNavigate()
-  console.log(edit)
+
+  useEffect(()=>{
+    if(edit.isEdit){
+      const {data} = edit
+      setFormData({
+        company: data.company,
+        logo: data.logo,
+        location: data.location,
+        position: data.position
+      })
+      setFormRadio({
+        newX: "" + data.new,
+        featured: "" + data.featured,
+        role: data.role,
+        level: data.level,
+        contract: data.contract
+      })
+      setFormCheck({
+        languages: data.languages,
+        tools: data.tools
+      })
+    }
+  }, [edit.isEdit])    //mesele bar edit son back to home son add job mesele ine
+
+
   const [formData, setFormData] = useState({
     company: "",
     logo: "",
