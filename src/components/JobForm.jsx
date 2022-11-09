@@ -5,9 +5,9 @@ import RadioForm from "./RadioForm"
 import TextForm from "./TextForm"
 import CheckForm from "./CheckForm"
 
-function JobForm({handleAdd}) {
+function JobForm({handleAdd, edit}) {
   const navigate = useNavigate()
-
+  console.log(edit)
   const [formData, setFormData] = useState({
     company: "",
     logo: "",

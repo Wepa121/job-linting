@@ -2,7 +2,7 @@ import Image from "assets/Image";
 
 function CardInfo({item}){
   const {company, position, featured, contract, location, logo} = item;
-  console.log(logo)
+
   return (
     <div className = "card-info">
         <Image logo = {logo}/>

@@ -1,19 +1,20 @@
+import {useNavigate} from "react-router-dom"
+import { FaTimes, FaEdit } from "react-icons/fa"
 import CardTools from "components/CardTools"
 import CardInfo from "components/CardInfo"
-import { FaTimes } from "react-icons/fa"
-import { FaEdit } from "react-icons/fa"
 
-function Card({item, handleDelete}) {
-  const {id} = item
+function Card({item, handleDelete, handleEdit}) {
+  const navigate = useNavigate();
 
   const onClickDelete = ()=>{
     if(window.confirm("Delete the Job?")){
-      handleDelete(id)
+      handleDelete(item.id)
     }
   }
 
   const onClickEdit = () => {
-
+    navigate("/add")
+    handleEdit(item)
   }
   
   return (
@@ -31,3 +32,6 @@ function Card({item, handleDelete}) {
 }
 
 export default Card
+
+// edit basylanson forma navigate bolmaly we shon ID sindaky datalar forma goyulmaly
+// submit bolanda eger editden bolsa update bolmaly, eger sheyle bolsa create bolmaly
