@@ -10,7 +10,7 @@ function App() {
     data: {},
     isEdit: false
   })
-  const {jobs, fetchJobs, insertJob, deleteJob} = useJobsState();
+  const {jobs, fetchJobs, insertJob, deleteJob, updateJob} = useJobsState();
 
   useEffect(() => {
     fetchJobs();
@@ -21,11 +21,18 @@ function App() {
     insertJob(tempObj);
   }
 
-  // Delete job but need id
-  const handleDelete = (id)=>{
+  // Delete job
+    const handleDelete = (id)=>{
     deleteJob(id)
   }
-  
+  // Update job
+  const handleUpdate = (id, payload) =>{
+    updateJob(id, payload)
+    setEdit({
+      data: {},
+      isEdit: false
+    })
+  }
 
   const handleEdit = (data) => {
     setEdit({data, isEdit: true})
@@ -36,7 +43,7 @@ function App() {
       <div className = "container">
         <Routes>
           <Route path="/" element = {<CardList list = {jobs} handleDelete = {handleDelete} handleEdit = {handleEdit}/>} />
-          <Route path="/add" element = {<JobForm handleAdd = {handleAdd} edit = {edit}/>} />
+          <Route path="/add" element = {<JobForm handleAdd = {handleAdd} edit = {edit} handleUpdate = {handleUpdate}/>} />
         </Routes>
       </div>
     </Router>
