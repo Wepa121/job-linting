@@ -142,9 +142,16 @@ li:first-child{
   border: none;
   background-color: inherit;
   position: absolute;
-  right: 20px;
+  right: 30px;
   top: 15px;
 }
-.delete:hover{
+.delete:hover, .edit:hover{
   cursor: pointer;
+}
+.edit{
+  border: none;
+  background-color: inherit;
+  position: absolute;
+  right: 55px;
+  top: 15px;
 }
