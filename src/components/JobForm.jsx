@@ -5,7 +5,7 @@ import RadioForm from "./RadioForm"
 import TextForm from "./TextForm"
 import CheckForm from "./CheckForm"
 
-function JobForm({handleAdd, edit}) {
+function JobForm({handleAdd, edit, handleUpdate}) {
   const navigate = useNavigate()
 
   useEffect(()=>{
@@ -29,7 +29,7 @@ function JobForm({handleAdd, edit}) {
         tools: data.tools
       })
     }
-  }, [edit.isEdit])    //mesele bar edit son back to home son add job mesele ine
+  }, [edit])    //mesele bar edit son back to home son add job mesele ine
 
 
   const [formData, setFormData] = useState({
@@ -62,7 +62,11 @@ function JobForm({handleAdd, edit}) {
     const obj = {...formData, ...formRadio, ...formCheck}
     obj.languages = `{${obj.languages.join(", ")}}`
     obj.tools = `{${obj.tools.join(", ")}}`
-    handleAdd(obj)
+    if(edit.isEdit){
+      handleUpdate(edit.data.id, obj)
+    }else{
+      handleAdd(obj)
+    }
     navigate("/")
   }
 
