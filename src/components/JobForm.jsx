@@ -60,8 +60,7 @@ function JobForm({handleAdd, edit, handleUpdate}) {
     setFormCheck({languages: [], tools: []})
     
     const obj = {...formData, ...formRadio, ...formCheck}
-    obj.languages = `{${obj.languages.join(", ")}}`
-    obj.tools = `{${obj.tools.join(", ")}}`
+    
     if(edit.isEdit){
       handleUpdate(edit.data.id, obj)
     }else{

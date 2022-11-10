@@ -35,8 +35,8 @@ export const insertJobsOne = (obj) => {
       level: "${level}",
       contract: "${contract}",
       location: "${location}",
-      languages: "${languages}",
-      tools: "${tools}"
+      languages: [${languages}],
+      tools: [${tools}]
     }){
       id
       company
@@ -78,8 +78,8 @@ export const updateJobsOne = (id, obj) => {
       level: "${level}",
       contract: "${contract}",
       location: "${location}",
-      languages: "${languages}",
-      tools: "${tools}"
+      languages: [${languages}],
+      tools: [${tools}]
     }) {
       id
       company
