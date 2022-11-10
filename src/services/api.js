@@ -1,9 +1,9 @@
 export const fetchApi = async (query) => { 
-  const res = await fetch("https://hasura-production-45b5.up.railway.app/v1/graphql",{
+  const res = await fetch(process.env.REACT_APP_HASURA_URL,{
     method: "POST", 
     headers:{
       "content-type" : "application/json",
-      "x-hasura-admin-secret" : "wepawepa121"
+      "x-hasura-admin-secret" : process.env.REACT_APP_HASURA_ADMIN_SECRET
     },
     body: JSON.stringify({
       query
