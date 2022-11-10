@@ -1,6 +1,8 @@
 export const queryJobs = `
   query{
-    Jobs {
+    Jobs (order_by: {
+      company: asc
+    }) {
       id
       company
       logo
