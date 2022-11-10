@@ -1,24 +1,33 @@
-export const queryJobs = `
-  query{
-    Jobs (order_by: {
-      company: asc
-    }) {
-      id
-      company
-      logo
-      new
-      featured
-      position
-      role
-      level
-      created_at
-      contract
-      location
-      languages
-      tools
+export const queryJobs = (obj) =>{
+
+  let {role, level, languages, tools} = obj
+  role = `_eq: ${role}`
+  level = `_eq: ${level}`
+  languages = `{_contains: [${languages}]}`
+  tools = `{_contains: [${tools}]}`
+  
+  return`
+    query{
+      Jobs (where: {role: {${obj.role && role}}, _and: {level: {${obj.level && level}}, _and: {languages: ${obj.languages.length > 0 ? languages: "{}"}, _and: {tools: ${obj.tools.length > 0 ? tools: "{}"}}}}}, order_by: {
+        company: asc
+      }) {
+        id
+        company
+        logo
+        new
+        featured
+        position
+        role
+        level
+        created_at
+        contract
+        location
+        languages
+        tools
+      }
     }
-  }
-  `
+    `
+}
 
 export const insertJobsOne = (obj) => {
   const {company, logo, newX, featured, position, role, level, contract, location, languages, tools} = obj

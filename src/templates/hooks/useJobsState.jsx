@@ -7,8 +7,8 @@ import { updateJobsOne } from "../../data/query";
 function useJobsState() {
   const [jobs, setJobs] = useState([]);
 
-  const fetchJobs = async() => {
-    const data = await fetchApi(queryJobs)
+  const fetchJobs = async(filter) => {
+    const data = await fetchApi(queryJobs(filter))
     setJobs(data.Jobs)
   }
 

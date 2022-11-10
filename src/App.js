@@ -21,8 +21,8 @@ function App() {
 
 
   useEffect(() => {
-    fetchJobs();
-  }, []);
+    fetchJobs(filterObj);
+  }, [filterObj]);
 
   // create new Job
   const handleAdd = (tempObj)=>{
