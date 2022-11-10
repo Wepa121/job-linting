@@ -57,6 +57,10 @@ body{
   font-weight: 700;
 }
 
+.card-info-company p {
+  margin-right: .5rem;
+}
+
 ul{
   display: flex;
   gap: 1rem;
