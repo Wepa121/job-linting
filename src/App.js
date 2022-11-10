@@ -50,7 +50,11 @@ function App() {
     <Router>
       <div className = "container">
         <Routes>
-          <Route path="/" element = {<CardList list = {jobs} handleDelete = {handleDelete} handleEdit = {handleEdit}/>} />
+          <Route path="/" element = {<CardList list = {jobs} 
+                                      handleDelete = {handleDelete} 
+                                      handleEdit = {handleEdit}
+                                      filterObj = {filterObj}
+                                      setFilter = {(obj) => setFilterObj(obj)}/>} />
           <Route path="/add" element = {<JobForm handleAdd = {handleAdd} edit = {edit} handleUpdate = {handleUpdate}/>} />
         </Routes>
       </div>

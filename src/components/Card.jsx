@@ -3,7 +3,7 @@ import { FaTimes, FaEdit } from "react-icons/fa"
 import CardTools from "components/CardTools"
 import CardInfo from "components/CardInfo"
 
-function Card({item, handleDelete, handleEdit}) {
+function Card({item, handleDelete, handleEdit, filterObj, setFilter}) {
   const navigate = useNavigate();
 
   const onClickDelete = ()=>{
@@ -20,7 +20,7 @@ function Card({item, handleDelete, handleEdit}) {
   return (
     <div className = "card">
       <CardInfo item = {item}/>
-      <CardTools item = {item}/>
+      <CardTools item = {item} filterObj = {filterObj} setFilter = {setFilter}/>
       <button className="delete" onClick={onClickDelete}>
         <FaTimes color="red"/>
       </button>
