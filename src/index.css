@@ -155,3 +155,11 @@ li:first-child{
   right: 55px;
   top: 15px;
 }
+
+.filter{
+  gap: 1rem
+}
+
+.filter :nth-child(2){
+  margin-left: auto;
+}
