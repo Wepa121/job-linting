@@ -18,8 +18,8 @@ function JobForm({handleAdd, edit, handleUpdate}) {
         position: data.position
       })
       setFormRadio({
-        newX: "" + data.new,
-        featured: "" + data.featured,
+        newX: data.new.toString(),
+        featured: data.featured.toString(),
         role: data.role,
         level: data.level,
         contract: data.contract
