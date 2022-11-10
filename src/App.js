@@ -12,6 +12,14 @@ function App() {
   })
   const {jobs, fetchJobs, insertJob, deleteJob, updateJob} = useJobsState();
 
+  const [filterObj, setFilterObj] = useState({
+    role: "",
+    level: "",
+    languages: [],
+    tools : []
+  })
+
+
   useEffect(() => {
     fetchJobs();
   }, []);
