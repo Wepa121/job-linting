@@ -3,12 +3,12 @@ export const queryJobs = (obj) =>{
   let {role, level, languages, tools} = obj
   role = `_eq: ${role}`
   level = `_eq: ${level}`
-  languages = `{_contains: [${languages}]}`
-  tools = `{_contains: [${tools}]}`
+  languages = `_contains: [${languages}]`
+  tools = `_contains: [${tools}]`
   
   return`
     query{
-      Jobs (where: {role: {${obj.role && role}}, _and: {level: {${obj.level && level}}, _and: {languages: ${obj.languages.length > 0 ? languages: "{}"}, _and: {tools: ${obj.tools.length > 0 ? tools: "{}"}}}}}, order_by: {
+      Jobs (where: {role: {${obj.role && role}}, _and: {level: {${obj.level && level}}, _and: {languages: {${obj.languages.join("") && languages}}, _and: {tools: {${obj.tools.join("") && tools}}}}}}, order_by: {
         company: asc
       }) {
         id
