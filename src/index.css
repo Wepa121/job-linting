@@ -167,3 +167,8 @@ li:first-child{
 .filter :nth-child(2){
   margin-left: auto;
 }
+
+.error{
+  color:red;
+  font-size: 0.815rem;
+}

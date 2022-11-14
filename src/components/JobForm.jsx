@@ -1,85 +1,71 @@
-import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { Formik } from "formik"
 
-import RadioForm from "./RadioForm"
-import TextForm from "./TextForm"
-import CheckForm from "./CheckForm"
+
+import Ara from "./Ara"
 
 function JobForm({handleAdd, edit, handleUpdate}) {
-  const navigate = useNavigate()
+  const navigate = useNavigate() 
 
-  useEffect(()=>{
+  const handleError = (values) => {
+    const errors = {}
+    if(!values.company) errors.company = "Please insert Copmany name"
+    else if(values.company.trim().length < 5) errors.company = "Company name must be at least ten character"
+
+    if(!values.logo) errors.logo = "Please insert Logo name"
+    else if(values.logo.trim().length < 5) errors.logo = "Logo name must be at least ten character"
+
+    if(!values.location) errors.location = "Please insert location name"
+    else if(values.location.trim().length < 5) errors.location = "Location name must be at least ten character"
+
+    if(!values.position) errors.position = "Please insert Position name"
+    else if(values.position.trim().length < 5) errors.position = "Position name must be at least ten character"
+
+    if(!values.newX) errors.newX = "Please choose one of them (new)"
+
+    if(!values.featured) errors.featured = "Please choose one of them (featured)"
+
+    if(!values.role) errors.role = "Please choose one of them (role)"
+
+    if(!values.level) errors.level = "Please choose one of them (level)"
+
+    if(!values.contract) errors.contract = "Please choose one of them (contract)"
+    return errors
+  }
+  
+  const handleSubmit = (values) => {
     if(edit.isEdit){
-      const {data} = edit
-      setFormData({
-        company: data.company,
-        logo: data.logo,
-        location: data.location,
-        position: data.position
-      })
-      setFormRadio({
-        newX: data.new.toString(),
-        featured: data.featured.toString(),
-        role: data.role,
-        level: data.level,
-        contract: data.contract
-      })
-      setFormCheck({
-        languages: data.languages,
-        tools: data.tools
-      })
+      handleUpdate(edit.data.id, values)
     }
-  }, [edit])    //mesele bar edit son back to home son add job mesele ine
-
-
-  const [formData, setFormData] = useState({
-    company: "",
-    logo: "",
-    location: "",
-    position: "",
-  })
-
-  const [formRadio, setFormRadio] = useState({
-    newX: "",
-    featured: "",
-    role: "",
-    level: "",
-    contract: "",
-  })
-
-  const [formCheck, setFormCheck] = useState({
-    languages: [],
-    tools: []
-  }) 
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    setFormData({ company: "", logo: "", location: "", position: "" })
-    setFormRadio({ newX: "", featured: "", role: "", level: "", contract: "" })
-    setFormCheck({languages: [], tools: []})
-    
-    const obj = {...formData, ...formRadio, ...formCheck}
-    
-    if(edit.isEdit){
-      handleUpdate(edit.data.id, obj)
-    }else{
-      handleAdd(obj)
+    else{
+      handleAdd(values)
     }
     navigate("/")
   }
 
 
   return (
-    <div className="form-card">
-      <form className="form" onSubmit={handleSubmit}>
-        <TextForm formData = {formData} setData = {(x) => setFormData(x)}/>
-        <RadioForm formRadio = {formRadio} setRadio = {(x) => setFormRadio(x)}/>
-        <CheckForm formCheck = {formCheck} setCheck = {(x) => setFormCheck(x)}/>
-        <button type= "submit" className="btn-submit">Add Job </button>
-        <button className="btn-submit" onClick={() => navigate("/")}>Back To Home</button>
-      </form>
-    </div>
+    <Formik
+    initialValues = {{
+      company: "",
+      logo: "",
+      location: "",
+      position: "",
+      newX: "",
+      featured: "",
+      role: "",
+      level: "",
+      contract: "",
+      languages: [],
+      tools: []
+    }}
+    validate = { handleError }
+    onSubmit = { handleSubmit }
+    >
+      {(formik) => {
+        return(<Ara formik = {formik} edit = {edit}/>)
+      }}
+    </Formik>
   )
 }
 
