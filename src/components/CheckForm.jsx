@@ -1,21 +1,6 @@
 
-function CheckForm({formCheck, setCheck}) {
-  
-  const handleChange = (e) => {
-    if(!formCheck[e.target.id].includes(e.target.value)){
-      setCheck({
-        ...formCheck, 
-        [e.target.id]:[...formCheck[e.target.id], e.target.value]
-      })
-    }
-    else{
-      setCheck({
-        ...formCheck,
-        [e.target.id]: formCheck[e.target.id].filter((item) => item !== e.target.value)
-      })
-
-    }
-  }
+function CheckForm({formik}) {
+  const {handleChange} = formik
 
   return (
     <div>
@@ -23,56 +8,56 @@ function CheckForm({formCheck, setCheck}) {
         <p>Which skills does the Company need?</p>
         <label>
           <input
-            name="language"
+            name="languages"
             type="checkbox" 
             id = "languages" 
             value="HTML"
             onChange={handleChange}
-            checked = {formCheck.languages.includes("HTML")}
+            checked = {formik.values.languages.includes("HTML")}
           />
           HTML
         </label>
         <label>
           <input
-            name="language"
+            name="languages"
             type="checkbox" 
             id = "languages" 
             value="CSS"
             onChange={handleChange}
-            checked = {formCheck.languages.includes("CSS")}
+            checked = {formik.values.languages.includes("CSS")}
           />
           Css
         </label>
         <label>
           <input
-            name="language"
+            name="languages"
             type="checkbox" 
             id = "languages" 
             value="JavaScript"
             onChange={handleChange}
-            checked = {formCheck.languages.includes("JavaScript")}
+            checked = {formik.values.languages.includes("JavaScript")}
           />
         JavaScript
         </label>
         <label>
           <input
-            name="language"
+            name="languages"
             type="checkbox"
             id = "languages" 
             value="Python"
             onChange={handleChange}
-            checked = {formCheck.languages.includes("Python")}
+            checked = {formik.values.languages.includes("Python")}
           />
           Python
         </label>
         <label>
           <input
-            name="language"
+            name="languages"
             type="checkbox" 
             id = "languages" 
             value="Ruby"
             onChange={handleChange}
-            checked = {formCheck.languages.includes("Ruby")}
+            checked = {formik.values.languages.includes("Ruby")}
           />
           Ruby
         </label>
@@ -87,7 +72,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="React"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("React")}
+            checked = {formik.values.tools.includes("React")}
           />
           React
         </label>
@@ -98,7 +83,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="Sass"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("Sass")}
+            checked = {formik.values.tools.includes("Sass")}
           />
           Sass
         </label>
@@ -109,7 +94,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="Ruby"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("Ruby")}
+            checked = {formik.values.tools.includes("Ruby")}
           />
         Ruby
         </label>
@@ -120,7 +105,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="RoR"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("RoR")}
+            checked = {formik.values.tools.includes("RoR")}
           />
           RoR
         </label>
@@ -131,7 +116,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="Vue"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("Vue")}
+            checked = {formik.values.tools.includes("Vue")}
           />
           Vue
         </label>
@@ -142,7 +127,7 @@ function CheckForm({formCheck, setCheck}) {
             id = "tools" 
             value="Django"
             onChange={handleChange}
-            checked = {formCheck.tools.includes("Django")}
+            checked = {formik.values.tools.includes("Django")}
           />
           Django
         </label>

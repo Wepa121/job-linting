@@ -1,36 +1,30 @@
 
-function RadioForm({formRadio, setRadio}) {
-  
-  const handleChange = (e) => {
-    setRadio({
-      ...formRadio,
-      [e.currentTarget.id] : e.currentTarget.value
-    })
-  }
+function RadioForm({formik}) {
+  const {handleChange} = formik  
+
   return (
     <div>
       <p>Is the Company New?</p>
         <label>
           <input 
-            name="new"
+            name="newX"
             type="radio"
-            id="newX"
             value = "true"
-            checked = {formRadio.newX === "true"}
+            checked = {formik.values.newX === "true"}
             onChange = {handleChange}
              />
           Yes
         </label>
         <label>
           <input 
-            name="new"
+            name="newX"
             type="radio"
-            id="newX"
             value = "false"
-            checked = {formRadio.newX === "false"}
+            checked = {formik.values.newX === "false"}
             onChange = {handleChange}
             />
           No
+          {(formik.errors.newX && formik.touched.newX) && <p className="error">{formik.errors.newX}</p>}
         </label>
 
         <p>Is the Company Featured?</p>
@@ -38,9 +32,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="featured"
             type="radio"
-            id="featured"
             value = "true"
-            checked = {formRadio.featured === "true"}
+            checked = {formik.values.featured === "true"}
             onChange = {handleChange}
             />
           Yes
@@ -49,12 +42,12 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="featured"
             type="radio"
-            id="featured"
             value = "false"
-            checked = {formRadio.featured === "false"}
+            checked = {formik.values.featured === "false"}
             onChange = {handleChange}
             />
           No
+          {(formik.errors.featured && formik.touched.featured) && <p className="error">{formik.errors.featured}</p>}
         </label>
 
         <p>What should the role of the developer be?</p>
@@ -62,9 +55,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="role"
             type="radio"
-            id="role"
             value = "Frontend"
-            checked = {formRadio.role === "Frontend"}
+            checked = {formik.values.role === "Frontend"}
             onChange = {handleChange}
             />
           Frontend
@@ -73,9 +65,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="role"
             type="radio"
-            id="role"
             value = "Backend"
-            checked = {formRadio.role === "Backend"}
+            checked = {formik.values.role === "Backend"}
             onChange = {handleChange}
             />
           Backend
@@ -84,12 +75,12 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="role"
             type="radio"
-            id="role"
             value = "Fullstack"
-            checked = {formRadio.role === "Fullstack"}
+            checked = {formik.values.role === "Fullstack"}
             onChange = {handleChange}
             />
           Fullstack
+          {(formik.errors.role && formik.touched.role) && <p className="error">{formik.errors.role}</p>}
         </label>
 
         <p>What should the developer level be?</p>
@@ -97,9 +88,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="level"
             type="radio"
-            id="level"
             value = "Junior"
-            checked = {formRadio.level === "Junior"}
+            checked = {formik.values.level === "Junior"}
             onChange = {handleChange}
             />
           Junior
@@ -108,9 +98,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="level"
             type="radio"
-            id="level"
             value = "Midweight"
-            checked = {formRadio.level === "Midweight"}
+            checked = {formik.values.level === "Midweight"}
             onChange = {handleChange}
             />
           Midweight
@@ -119,12 +108,12 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="level"
             type="radio"
-            id="level"
             value = "Senior"
-            checked = {formRadio.level === "Senior"}
+            checked = {formik.values.level === "Senior"}
             onChange = {handleChange}
             />
           Senior
+          {(formik.errors.level && formik.touched.level) && <p className="error">{formik.errors.level}</p>}
         </label>
 
         <p>What about Contract?</p>
@@ -132,9 +121,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="contract"
             type="radio"
-            id="contract"
             value = "Part Time"
-            checked = {formRadio.contract === "Part Time"}
+            checked = {formik.values.contract === "Part Time"}
             onChange = {handleChange}
             />
           Part Time
@@ -143,9 +131,8 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="contract"
             type="radio"
-            id="contract"
             value = "Full Time"
-            checked = {formRadio.contract === "Full Time"}
+            checked = {formik.values.contract === "Full Time"}
             onChange = {handleChange}
             />
           Full Time
@@ -154,12 +141,12 @@ function RadioForm({formRadio, setRadio}) {
           <input 
             name="contract"
             type="radio"
-            id="contract"
             value = "Contract"
-            checked = {formRadio.contract === "Contract"}
+            checked = {formik.values.contract === "Contract"}
             onChange = {handleChange}
             />
           Contract
+          {(formik.errors.contract && formik.touched.contract) && <p className="error">{formik.errors.contract}</p>}
         </label>
     </div>
   )

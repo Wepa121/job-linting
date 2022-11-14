@@ -1,12 +1,6 @@
 
-function TextForm({formData, setData}) {
-  
-  const handleChange = (e)=>{
-    setData({
-      ...formData, 
-      [e.target.id] : e.target.value
-    })
-  }
+function TextForm({formik}) {
+
   return (
     <div className="form-text">
       <label>
@@ -14,33 +8,36 @@ function TextForm({formData, setData}) {
         <input 
           name="company"
           id="company"
-          value = {formData.company}
-          onChange = {handleChange}/>
+          {...formik.getFieldProps("company")}/>
       </label>
+      {(formik.errors.company && formik.touched.company) && <p className="error">{formik.errors.company}</p>}
+      
       <label>
         Logo
         <input 
           name = "logo"
           id="logo"
-          value = {formData.logo}
-          onChange = {handleChange}/>
+          {...formik.getFieldProps("logo")}/>    
       </label>
+      {(formik.errors.logo && formik.touched.logo) && <p className="error">{formik.errors.logo}</p>}
+
       <label>
         Location
         <input 
           name = "location"
           id="location"
-          value = {formData.location}
-          onChange = {handleChange}/>
+          {...formik.getFieldProps("location")}/>
       </label>
+      {(formik.errors.location && formik.touched.location) && <p className="error">{formik.errors.location}</p>}
+      
       <label>
         Position
         <input 
           name = "position"
           id="position"
-          value = {formData.position}
-          onChange = {handleChange}/>
+          {...formik.getFieldProps("position")}/>
       </label>
+      {(formik.errors.position && formik.touched.position) && <p className="error">{formik.errors.position}</p>}
     </div>
   )
 }
