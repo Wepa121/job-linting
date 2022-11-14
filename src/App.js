@@ -22,6 +22,8 @@ function App() {
 
   useEffect(() => {
     fetchJobs(filterObj);
+    
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterObj]);
 
   // create new Job
