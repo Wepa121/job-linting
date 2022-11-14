@@ -34,7 +34,7 @@ function JobForm({handleAdd, edit, handleUpdate}) {
   }
   
   const handleSubmit = (values) => {
-    if(edit.isEdit){
+    if(edit && edit.isEdit){
       handleUpdate(edit.data.id, values)
     }
     else{
@@ -67,6 +67,12 @@ function JobForm({handleAdd, edit, handleUpdate}) {
       }}
     </Formik>
   )
+}
+
+JobForm.defaultProps = {
+  handleAdd: null,
+  edit: null,
+  handleUpdate: null, 
 }
 
 export default JobForm

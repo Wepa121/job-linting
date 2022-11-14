@@ -55,7 +55,8 @@ function App() {
                                       handleEdit = {handleEdit}
                                       filterObj = {filterObj}
                                       setFilter = {(obj) => setFilterObj(obj)}/>} />
-          <Route path="/add" element = {<JobForm handleAdd = {handleAdd} edit = {edit} handleUpdate = {handleUpdate}/>} />
+          <Route path="/add" element = {<JobForm handleAdd = {handleAdd}/>} />
+          <Route path="/edit/:id" element = {<JobForm edit = {edit} handleUpdate = {handleUpdate}/>} />
         </Routes>
       </div>
     </Router>

@@ -13,7 +13,7 @@ function Card({item, handleDelete, handleEdit, filterObj, setFilter}) {
   }
 
   const onClickEdit = () => {
-    navigate("/add")
+    navigate(`/edit/${item.id}`)
     handleEdit(item)
   }
   

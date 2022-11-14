@@ -8,7 +8,7 @@ function Ara({formik, edit}) {
   const navigate = useNavigate()
   
   useEffect(()=>{
-    if(edit.isEdit){
+    if(edit && edit.isEdit){
       const {data} = edit
       formik.setValues({
         ...data, newX: data.new.toString(), featured: data.featured.toString(),
